@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/index.css">
+    <link rel="shortcut icon" type="image/png" sizes="16X16" href="/static/brain.png">
+    <title>Home</title>
+</head>
+<div id="wrapper">
+    <div id="content">
+
+        <body>
+            <div id="header-container">
+                <div id="name-cont">
+                    <h1 id="web-name">Nibiru</h1>
+                </div>
+            </div>
+            <div id="intro">
+                <h2 id="intro-title">Welcome to Nibiru</h2>
+                <p id="intro-desc"> Nibiru is a machine learning web app that I built to make different weather
+                    predictions
+                    based on data about past weather events. The data it is using is from a csv file that I downloaded
+                    from <a id="kaggle-link"
+                        href="https://www.kaggle.com/datasets/sobhanmoosavi/us-weather-events">Kaggle</a> which is
+                    an online community of data scientists and machine learning enthusiasts who come together to
+                    participate in various data science competitions, collaborate on data science projects, and share
+                    knowledge and insights about data science and machine learning.
+                    The purpose of building this app was to bring awareness about climate change by displaying how the
+                    weather has changed over the years. And to also allow users to experiment with some machine learning
+                    models
+                    and to see visualizations of those models. Currently the app can only make minor predictions because
+                    the data has limited numerical data to base the machine learning models on. Hopefully with further
+                    development
+                    or the use of different data I could integrate more prediction models.
+                </p>
+                <div id="button-sec">
+                    <p id="nav-header">Nav-Section</p>
+                    <a id="chart-butn" href="{{url_for('charts')}}">Charts</a>
+                    <a id="kchart-butn" href="{{url_for('kcharts')}}">K-Charts</a>
+                    <a id="data-butn" href="{{url_for('data')}}">Data</a>
+                </div>
+            </div>
+            <div id="predictions-sec">
+                <h2 id="pred-title">Make Some Predictions</h2>
+                <div id="region-pred">
+                    <h3 id="reg-title">Regional prediction</h3>
+                    <p id="reg-desc">Here you can produce a prediction based on weather events that occurred from
+                        2016-21 and specify
+                        which region you would like the prediction to focus on.</p>
+                    <form id="pred-fields" autocomplete="off" method="post" action="{{url_for('predict')}}">
+                        <label id="state-lab" for="states">Choose a State:</label>
+                        <select id="state" name="state">
+                            <option value="AL">AL</option>
+                            <option value="AR">AR</option>
+                            <option value="AZ">AZ</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="IA">IA</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="MA">MA</option>
+                            <option value="MD">MD</option>
+                            <option value="ME">ME</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MO">MO</option>
+                            <option value="MS">MS</option>
+                            <option value="MT">MT</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="NE">NE</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NV">NV</option>
+                            <option value="NY">NY</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VA">VA</option>
+                            <option value="VT">VT</option>
+                            <option value="WA">WA</option>
+                            <option value="WI">WI</option>
+                            <option value="WV">WV</option>
+                            <option value="WY">WY</option>
+                        </select>
+                        <label id="type-lab" for="types">Choose Weather Type:</label>
+                        <select id="type" name="type">
+                            <option value="Cold">Cold</option>
+                            <option value="Fog">Fog</option>
+                            <option value="Hail">Hail</option>
+                            <option value="Precipitation">Precipitation</option>
+                            <option value="Rain">Rain</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Storm">Storm</option>
+                        </select>
+                        <div class="city-auto">
+                            <input id="cityinput" type="text" placeholder="City" name="city" required>
+                        </div>
+                        <div class="county-auto" style="width:300px;">
+                            <input id="countyinput" type="text" placeholder="County" name="county" required>
+                        </div>
+                        <p id="pred-desc">Please enter 6 predictions to help with the final prediction.</p>
+                        <label id="pred-lab1" for="pred1">Prediction 1:</label>
+                        <input id="pred1" type="number" name="pred1" min="0" required>
+                        <label id="pred-lab2" for="pred2">Prediction 2:</label>
+                        <input id="pred2" type="number" name="pred2" min="0" required>
+                        <label id="pred-lab3" for="pred3">Prediction 3:</label>
+                        <input id="pred3" type="number" name="pred3" min="0" required>
+                        <label id="pred-lab4" for="pred4">Prediction 4:</label>
+                        <input id="pred4" type="number" name="pred4" min="0" required>
+                        <label id="pred-lab5" for="pred5">Prediction 5:</label>
+                        <input id="pred5" type="number" name="pred5" min="0" required>
+                        <label id="pred-lab6" for="pred6">Prediction 6:</label>
+                        <input id="pred6" type="number" name="pred6" min="0" required>
+                        <input id="pred-butn" type="submit" name="predict" value="Predict">
+                    </form>
+                    <p id="res-pred">Output</p>
+                    <div id="output-sec1">
+                        {% if error %}
+                        <div id="err-output" class="alert alert-danger">
+                            {{ error }}
+                            <p id="output-info"> <b>Solution:</b> The error could have happened because the region that
+                                your are requesting might not be in
+                                the data being used to make a prediction. To check whether your region is in the data
+                                being used please visit <a id="data-link" href="{{url_for('data')}}">Data.</a></p>
+                        </div>
+                        {% endif %}
+                        {% if output %}
+                        <div id="suc-output" class="alert alert-success">
+                            <p>Result: {{output}}</p>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                    <div id="info-box1" style="display: none;">
+                        <h4 id="instr-tit1">To create a regional prediction please follow the following steps:</h4>
+                        <ol id="reg-instr">
+                            <li>First choose the state of the region you would like to use.</li>
+                            <li>Next choose the weather type you would like to base your prediction on.</li>
+                            <li>Then enter the city that your region is based in.</li>
+                            <li>After that enter the county that the city is in.</li>
+                            <li>Lastly enter 6 predictions, to help train the data.</li>
+                        </ol>
+                        <p id="text-info1">Please note that your predictions influence the final prediction drastically.
+                            If you need
+                            help choosing the predictions please visit the charts page to gain more insight on the
+                            data
+                            being used.</p>
+                        <p id="q-instr1">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button id="info-btn1" class="info-button" data-info-box="info-box1"><i
+                            class="fas fa-question"></i></button>
+                </div>
+                <div id="coun-pred">
+                    <h3 id="coun-title">Country-wide Prediction</h3>
+                    <p id="coun-desc">Make a prediction based on the total times the weather event occurred acrossed the
+                        country from
+                        2016-21.</p>
+                    <form id="coun-fields" method="post" action="{{url_for('counPredict')}}">
+                        <label id="coun-lab1" for="countryTypes">Choose Weather Type:</label>
+                        <select id="countryType" name="counType">
+                            <option value="Cold">Cold</option>
+                            <option value="Fog">Fog</option>
+                            <option value="Hail">Hail</option>
+                            <option value="Precipitation">Precipitation</option>
+                            <option value="Rain">Rain</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Storm">Storm</option>
+                        </select>
+                        <p id="pred-desc2">Please enter 6 predictions to help with the final prediction.</p>
+                        <label id="coun-pred1" for="countryPred1">Prediction 1:</label>
+                        <input id="countPred1" type="number" name="counpred1" min="0" required>
+                        <label id="coun-pred2" for="countryPred2">Prediction 2:</label>
+                        <input id="countPred2" type="number" name="counpred2" min="0" required>
+                        <label id="coun-pred3" for="countryPred3">Prediction 3:</label>
+                        <input id="countPred3" type="number" name="counpred3" min="0" required>
+                        <label id="coun-pred4" for="countryPred4">Prediction 4:</label>
+                        <input id="countPred4" type="number" name="counpred4" min="0" required>
+                        <label id="coun-pred5" for="countryPred5">Prediction 5:</label>
+                        <input id="countPred5" type="number" name="counpred5" min="0" required>
+                        <label id="coun-pred6" for="countryPred6">Prediction 6:</label>
+                        <input id="countPred6" type="number" name="counpred6" min="0" required>
+                        <input id="pred-butn2" type="submit" name="predict2" value="Predict">
+                    </form>
+                    <p id="cou-res">Output</p>
+                    <div id="output-sec2">
+                        {% if error2 %}
+                        <div id="err-output2" class="alert alert-danger">
+                            {{ error2 }}
+                            <p id="output-info2"> <b>Solution:</b> The error could have happened because the region that
+                                your are requesting might not be in
+                                the data being used to make a prediction. To check whether your region is in the data
+                                being used please visit <a id="data-link2" href="{{url_for('data')}}">Data.</a></p>
+                        </div>
+
+                        {% endif %}
+                        {% if output2 %}
+                        <div id="suc-output2" class="alert alert-success">
+                            <p>Result: {{output2}}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div id="info-box2" style="display: none;">
+                        <h4 id="instr-tit2">To create a country-wide prediction please follow the following steps:</h4>
+                        <ol id="cou-instr">
+                            <li>First choose the weather-type that you would like to use.</li>
+                            <li>Then enter six predictions to help train the model.</li>
+                        </ol>
+                        <p id="text-info2">Please note that your predictions influence the final prediction drastically.
+                            If you need
+                            help choosing the predictions please visit the charts page to gain more insight on the data
+                            being used.</p>
+                        <p id="q-instr2">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button id="info-btn2" class="info-button" data-info-box="info-box2"><i
+                            class="fas fa-question"></i></button>
+                </div>
+                <script src="/static/scripts/county.js"></script>
+                <script src="/static/scripts/city.js"></script>
+                <script src="/static/scripts/infobox.js"></script>
+                <script src="/static/scripts/scrollPos.js"></script>
+            </div>
+        </body>
+    </div>
+</div>
+
+</html>

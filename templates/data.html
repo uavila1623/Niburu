@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/data.css">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="/static/brain.png">
+    <title>Data</title>
+</head>
+<div id="wrapper">
+    <div id="content">
+
+        <body>
+            <div id="header-container">
+                <div id="name-cont">
+                    <h1 id="web-name">Nibiru</h1>
+                </div>
+            </div>
+            <div id="data-sec">
+                <div id="info-sec">
+                    <h1 id="intro-title">Available Data</h1>
+                    <h3 id="intro-desc">Here you'll find more information on the data being used. Whether thats to check
+                        for valid
+                        inputs or to
+                        look up a specific input.</h3>
+                    <div id="button-sec">
+                        <p id="nav-header">Nav-Section</p>
+                        <a id="home-butn" href="{{url_for('index')}}">Home</a>
+                        <a id="chart-butn" href="{{url_for('charts')}}">Charts</a>
+                        <a id="kchart-butn" href="{{url_for('kcharts')}}">K-Charts</a>
+                    </div>
+                </div>
+                <div id="search-sec">
+                    <h3 id="search-title">Start Search...</h3>
+                    <form id="search-fields" method="GET" action="/searchBar">
+                        <input id="search-input" type="text" name="search" placeholder="Search...">
+                        <input id="results-len" type="number" name="results-len" min="0" max="100"
+                            placeholder="Rows Displayed" required>
+                        <button id="search-button" type="submit">Search</button>
+                    </form>
+                    <div id="info-content" style="display: none;">
+                        <h4 id="instr-title">Please use the steps below to use the search function:</h4>
+                        <ol id="data-instr">
+                            <li>Enter the weather type, city, county, or state that you are looking for in search bar.
+                            </li>
+                            <li>Then enter how many rows you want to display by default it displays 10 rows. Please note
+                                that the
+                                larger number of rows then the longer it takes to load results.</li>
+                            <li>After you entered all the fields press the search button and wait for the results to
+                                display.</li>
+                            <li>If any results are found then it will display them under the column names.</li>
+                            <li>You can use the row values as inputs to make a prediction or to create a chart.</li>
+                        </ol>
+                        <p id="data-info">Please note that due to the size of the data the search length is limited to 100 rows max.</p>
+                        <p id="q-instr1">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button type="button" id="bttn-info">
+                        <i class="fa fa-question"></i>
+                    </button>
+                    <h2 id="message-title">Message Output</h2>
+                    <div id="message-sec">
+                        {% if error %}
+                        <div id="err-output" class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                        {% endif %}
+                        {% if not error %}
+                        {% if message %}
+                        <p id="message">{{ message }}</p>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <h2 id="data-title">Data Output</h2>
+                    <div id="table-sec">
+                        <table>
+                            <th>Year</th>
+                            <th>Type</th>
+                            <th>Precipitation</th>
+                            <th>City</th>
+                            <th>County</th>
+                            <th>State</th>
+                            <tbody>
+                                {% for row in data %}
+                                <tr>
+                                    {% for cell in row %}
+                                    <td>{{ cell }}</td>
+                                    {% endfor %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <script src="/static/scripts/infobox2.js"></script>
+                    <script src="/static/scripts/scrollPos.js"></script>
+                </div>
+            </div>
+        </body>
+    </div>
+</div>
+
+</html>

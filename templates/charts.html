@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/charts.css">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="/static/brain.png">
+    <title>Charts</title>
+</head>
+<div id="wrapper">
+    <div id="content">
+
+        <body>
+            <div id="header-container">
+                <div id="name-cont">
+                    <h1 id="web-name">Nibiru</h1>
+                </div>
+            </div>
+            <div id="sub-header">
+                <h1 id="charts-title">Lets build some Charts!</h1>
+                <div id="button-sec">
+                    <p id="nav-header">Nav-Section</p>
+                    <a id="home-butn" href="{{url_for('index')}}">Home</a>
+                    <a id="kchart-butn" href="{{url_for('kcharts')}}">K-Charts</a>
+                    <a id="data-butn" href="{{url_for('data')}}">Data</a>
+                </div>
+            </div>
+            <div id="chart-sec">
+                <div id="prec-chart">
+                    <h3 id="prec-title">Create a Nation-wide preciptation chart:</h3>
+                    <p id="chart-output">Chart Output</p>
+                    <div id="prec-win">
+                        {% if error %}
+                        <div id="err-output1" class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                        {% endif %}
+                        {% if not error %}
+                        {% if chart_data %}
+                        <div id="img-win1" class="chart-success">
+                            <img id="prec-img" src="data:image/png;base64,{{ chart_data }}" alt="Chart Image Issue">
+                        </div>
+                        {% else %}
+                        <div id="icon-win1">
+                            <i class="fas fa-tint fa-2x"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="prec-fields" method="POST" action="{{ url_for('precChart') }}">
+                        <label id="chart-lab1" for="chart-lab">Chart type:</label>
+                        <select id="chart-type" name="chart-type">
+                            <option value="line">Line</option>
+                            <option value="scatter">Scatter</option>
+                            <option value="bar">Bar</option>
+                        </select>
+                        <input type="submit" id="prec-button" name="prec-button" value="Make Chart">
+                    </form>
+                    <div id="info-box1" style="display: none;">
+                        <h4 id="instr-tit1">To create a preciptation chart follow the steps below:</h4>
+                        <ol id="prec-instr">
+                            <li>Choose the chart type you want to display.</li>
+                            <li>Then click the "Make Chart" button and wait for the chart to display.</li>
+                        </ol>
+                        <p id="text-info1">Please note that the data being displayed is based on the total preciptation
+                            across the
+                            country
+                            for
+                            each year from 2016-21.</p>
+                        <p id="q-instr1">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button id="info-btn1" class="info-button" data-info-box="info-box1"><i
+                            class="fas fa-question"></i></button>
+                </div>
+                <div id="reg-chart">
+                    <h3 id="reg-title">Create a chart based on a specific region and weather type:</h3>
+                    <p id="chart-output2">Chart Output</p>
+                    <div id="reg-win">
+                        {% if error2 %}
+                        <div id="err-output2" class="alert alert-danger">
+                            {{ error2 }}
+                            <p id="output-info"><b>Solution:</b> The error could have occurred because the request that
+                                you made might not be in the data
+                                that is
+                                being used to generate the chart. To check if your combination of state, weather-type,
+                                city, and
+                                county exist please visit <a id="data-link" href="{{url_for('data')}}">Data</a> page.
+                            </p>
+                        </div>
+                        {% endif %}
+                        {% if not error2 %}
+                        {% if spec_data %}
+                        <div id="img-win2" class="chart-success">
+                            <img id="reg-img" src="data:image/png;base64,{{ spec_data }}" alt="Chart Image Issue">
+                        </div>
+                        {% else %}
+                        <div id="icon-win2">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="reg-fields" autocomplete="off" method="POST" action="{{url_for('specChart')}}">
+                        <label id="state-lab1" for="states">State:</label>
+                        <select id="state" name="state">
+                            <option value="AL">AL</option>
+                            <option value="AR">AR</option>
+                            <option value="AZ">AZ</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="IA">IA</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="MA">MA</option>
+                            <option value="MD">MD</option>
+                            <option value="ME">ME</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MO">MO</option>
+                            <option value="MS">MS</option>
+                            <option value="MT">MT</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="NE">NE</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NV">NV</option>
+                            <option value="NY">NY</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VA">VA</option>
+                            <option value="VT">VT</option>
+                            <option value="WA">WA</option>
+                            <option value="WI">WI</option>
+                            <option value="WV">WV</option>
+                            <option value="WY">WY</option>
+                        </select>
+                        <label id="type-lab1" for="types">Weather Type:</label>
+                        <select id="type" name="type">
+                            <option value="Cold">Cold</option>
+                            <option value="Fog">Fog</option>
+                            <option value="Hail">Hail</option>
+                            <option value="Precipitation">Precipitation</option>
+                            <option value="Rain">Rain</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Storm">Storm</option>
+                        </select>
+                        <label id="chart-lab2" for="chart-lab">Chart type:</label>
+                        <select id="chart-type2" name="chart-type2">
+                            <option value="line">Line</option>
+                            <option value="scatter">Scatter</option>
+                            <option value="bar">Bar</option>
+                        </select>
+                        <div class="city-auto" style="width:300px;">
+                            <input id="cityinput" type="text" placeholder="City" name="city" required>
+                        </div>
+                        <div class="county-auto" style="width:300px;">
+                            <input id="countyinput" type="text" placeholder="County" name="county" required>
+                        </div>
+                        <input id="reg-button" type="submit" name="reg-button" value="Make Chart">
+                    </form>
+                    <div id="info-box2" style="display: none;">
+                        <h4 id="instr-tit2">To create a regional chart follow the steps below:</h4>
+                        <ol id="reg-instr">
+                            <li>Choose the state that your city and county is based in.</li>
+                            <li>Then choose the weather type that you want to base the chart on.</li>
+                            <li>Next choose the chart type you want to display.</li>
+                            <li>After that enter the city that you want to base the data on.</li>
+                            <li>Finally enter the county that the city is based in.</li>
+                            <li>Press the "Make Chart" button and wait for the chart to display.</li>
+                        </ol>
+                        <p id="text-info2">Some brief information on the data being displayed in the chart. The chart is
+                            showing how
+                            many
+                            times the weather type occurred in the region from 2016-21.</p>
+                        <p id="q-instr2">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button id="info-btn2" class="info-button" data-info-box="info-box2"><i
+                            class="fas fa-question"></i></button>
+                </div>
+                <div id="state-chart">
+                    <h3 id="state-title">Create a State-wide chart based on a weather type:</h3>
+                    <p id="chart-output3">Chart Output</p>
+                    <div id="state-win">
+                        {% if error3 %}
+                        <div id="err-output3" class="alert alert-danger">
+                            {{ error3 }}
+                            <p id="output-info2">The error could have happened because the request that you made may not
+                                exist in the data
+                                being
+                                used
+                                to generate the chart. If you need to check if your combination of state and weather
+                                type exist
+                                in the data please visit the <a id="data-link2" href="{{url_for('data')}}">Data</a>
+                                page.</p>
+                        </div>
+                        {% endif %}
+                        {% if not error3 %}
+                        {% if sta_data %}
+                        <div id="img-win3">
+                            <img id="state-img" src="data:image/png;base64,{{ sta_data }}" alt="Chart Image Issue">
+                        </div>
+                        {% else %}
+                        <div id="icon-win3">
+                            <i class="fas fa-chart-area fa-2x"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="state-fields" method="POST" action="{{url_for('stateChart')}}">
+                        <label id="state-lab2" for="states">State:</label>
+                        <select id="state2" name="state2">
+                            <option value="AL">AL</option>
+                            <option value="AR">AR</option>
+                            <option value="AZ">AZ</option>
+                            <option value="CA">CA</option>
+                            <option value="CO">CO</option>
+                            <option value="CT">CT</option>
+                            <option value="DE">DE</option>
+                            <option value="FL">FL</option>
+                            <option value="GA">GA</option>
+                            <option value="IA">IA</option>
+                            <option value="ID">ID</option>
+                            <option value="IL">IL</option>
+                            <option value="IN">IN</option>
+                            <option value="KS">KS</option>
+                            <option value="KY">KY</option>
+                            <option value="LA">LA</option>
+                            <option value="MA">MA</option>
+                            <option value="MD">MD</option>
+                            <option value="ME">ME</option>
+                            <option value="MI">MI</option>
+                            <option value="MN">MN</option>
+                            <option value="MO">MO</option>
+                            <option value="MS">MS</option>
+                            <option value="MT">MT</option>
+                            <option value="NC">NC</option>
+                            <option value="ND">ND</option>
+                            <option value="NE">NE</option>
+                            <option value="NH">NH</option>
+                            <option value="NJ">NJ</option>
+                            <option value="NM">NM</option>
+                            <option value="NV">NV</option>
+                            <option value="NY">NY</option>
+                            <option value="OH">OH</option>
+                            <option value="OK">OK</option>
+                            <option value="OR">OR</option>
+                            <option value="PA">PA</option>
+                            <option value="RI">RI</option>
+                            <option value="SC">SC</option>
+                            <option value="SD">SD</option>
+                            <option value="TN">TN</option>
+                            <option value="TX">TX</option>
+                            <option value="UT">UT</option>
+                            <option value="VA">VA</option>
+                            <option value="VT">VT</option>
+                            <option value="WA">WA</option>
+                            <option value="WI">WI</option>
+                            <option value="WV">WV</option>
+                            <option value="WY">WY</option>
+                        </select>
+                        <label id="type-lab2" for="types">Weather Type:</label>
+                        <select id="type2" name="type2">
+                            <option value="Cold">Cold</option>
+                            <option value="Fog">Fog</option>
+                            <option value="Hail">Hail</option>
+                            <option value="Precipitation">Precipitation</option>
+                            <option value="Rain">Rain</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Storm">Storm</option>
+                        </select>
+                        <label id="chart-lab3" for="chart-lab">Chart type</label>
+                        <select id="chart-type3" name="chart-type3">
+                            <option value="line">Line</option>
+                            <option value="scatter">Scatter</option>
+                            <option value="bar">Bar</option>
+                        </select>
+                        <input id="state-button" type="submit" name="state-button" value="Make Chart">
+                    </form>
+                    <div id="info-box3" style="display: none;">
+                        <h4 id="instr-tit3">To create a state-wide chart follow the steps below:</h4>
+                        <ol id="state-instr">
+                            <li>First choose the state that you want to base the chart data on.</li>
+                            <li>Next choose the weather type that you want to use for the chart.</li>
+                            <li>Then choose the type of chart you want displayed.</li>
+                            <li>Finally press the "Make Chart" button and wait for the chart to display.</li>
+                        </ol>
+                        <p id="text-info3">Some brief information on the data being displayed in the chart. The chart is
+                            showing how
+                            many times
+                            the weather type occurred in the state from 2016-21.</p>
+                        <p id="q-instr3">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button id="info-btn3" class="info-button" data-info-box="info-box3"><i
+                            class="fas fa-question"></i></button>
+                </div>
+                <div id="nat-chart">
+                    <h3 id="nation-title">Create a Nation-wide chart based on a weather type:</h3>
+                    <p id="chart-output4">Chart Output</p>
+                    <div id="nat-win">
+                        {% if error4 %}
+                        <div id="err-output4" class="alert alert-danger">
+                            {{ error4 }}
+                        </div>
+                        {% endif %}
+                        {% if not error4 %}
+                        {% if nat_data %}
+                        <div id="img-win4">
+                            <img id="nat-img" src="data:image/png;base64,{{ nat_data }}" alt="Chart Image Issue">
+                        </div>
+                        {% else %}
+                        <div id="icon-win4">
+                            <i class="fas fa-chart-bar fa-2x"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="nat-fields" method="POST" action="{{url_for('nationChart')}}">
+                        <label id="type-lab3" for="types">Weather Type:</label>
+                        <select id="type3" name="type3">
+                            <option value="Cold">Cold</option>
+                            <option value="Fog">Fog</option>
+                            <option value="Hail">Hail</option>
+                            <option value="Precipitation">Precipitation</option>
+                            <option value="Rain">Rain</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Storm">Storm</option>
+                        </select>
+                        <label id="chart-lab4" for="chart-lab">Chart type:</label>
+                        <select id="chart-type4" name="chart-type4">
+                            <option value="line">Line</option>
+                            <option value="scatter">Scatter</option>
+                            <option value="bar">Bar</option>
+                        </select>
+                        <input id="nat-button" type="submit" name="nat-button" value="Make Chart">
+                    </form>
+                    <div id="info-box4" style="display: none;">
+                        <h4 id="instr-tit4">To create a nation-wide chart follow the steps below:</h4>
+                        <ol id="nat-instr">
+                            <li>First choose the weather type to base the chart on.</li>
+                            <li>Then choose the chart type you want to display.</li>
+                            <li>Finally press the "Make Chart" button and wait for the chart to display.</li>
+                        </ol>
+                        <p id="text-info4">Some brief information on the data being displayed in the chart. The chart is
+                            showing how
+                            many
+                            times the weather type occurred in the nation from 2016-21.</p>
+                        <p id="q-instr4">To close this window please "click" the ? icon.</p>
+                    </div>
+                    <button id="info-btn4" class="info-button" data-info-box="info-box4"><i
+                            class="fas fa-question"></i></button>
+                </div>
+            </div>
+            <script src="/static/scripts/county.js"></script>
+            <script src="/static/scripts/city.js"></script>
+            <script src="/static/scripts/infobox.js"></script>
+            <script src="/static/scripts/scrollPos.js"></script>
+        </body>
+    </div>
+</div>
+
+</html>

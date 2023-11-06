@@ -1,0 +1,444 @@
+/* This is the css file for the kchart.html page file */
+
+/* importing the fonts  */
+@font-face {
+    font-family: 'Bubble-font';
+    src: url('/static/fonts/bubblebaz.ttf') format('truetype');
+}
+
+/* styling for wrapper and content divs */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+#wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(51, 53, 52);
+}
+
+#content {
+    max-width: 1300px;
+    margin: auto;
+    padding-top: 70px;
+    height: 3290px;
+}
+
+/* header styling: */
+#header-container {
+    max-width: 1300px;
+    height: 100px;
+    background-color: #04102F;
+    position: relative;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+#name-cont {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#web-name {
+    font-size: 70px;
+    color: #DFD4E5;
+    font-family: 'Bubble-font';
+    text-shadow: 0 0 5px #d39af2, 0 0 5px #d39af2, 0 0 5px #d39af2, 0 0 7px #d39af2;
+}
+
+/* intro styling */
+
+#intro {
+    position: relative;
+    max-width: 1300px;
+    height: 480px;
+    background-color: #274956;
+    top: -45px;
+    padding-bottom: 20px;
+}
+
+#intro-title {
+    position: relative;
+    color: #f1edf4;
+    font-family: 'Bubble-font';
+    font-size: 40px;
+    padding-top: 30px;
+    padding-left: 30px;
+    letter-spacing: 1px;
+}
+
+#intro-desc {
+    position: relative;
+    color: #f1edf4;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 20px;
+    word-spacing: 2px;
+}
+
+/* styling for nav button section */
+
+#button-sec {
+    position: absolute;
+    height: 140px;
+    width: 220px;
+    background-color: #04102F;
+    margin-left: 60px;
+    margin-top: 20px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #d39af2;
+}
+
+#chart-butn {
+    position: absolute;
+    height: 20px;
+    width: 60px;
+    color: #f1edf4;
+    background-color: #FEC14A;
+    padding-left: 10px;
+    margin-top: 50px;
+    margin-left: 15px;
+    text-decoration: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #EB8B3B;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+#home-butn {
+    position: absolute;
+    height: 20px;
+    width: 75px;
+    padding-left: 30px;
+    margin-left: 55px;
+    margin-top: 95px;
+    background-color: #FEC14A;
+    color: #f1edf4;
+    text-decoration: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #EB8B3B;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+#data-butn {
+    position: absolute;
+    height: 20px;
+    width: 55px;
+    padding-left: 20px;
+    margin-left: 115px;
+    margin-top: 50px;
+    background-color: #FEC14A;
+    color: #f1edf4;
+    text-decoration: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #EB8B3B;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+#nav-header {
+    color: #d39af2;
+    position: absolute;
+    font-family: 'Bubble-font';
+    font-size: 30px;
+    margin-left: 40px;
+    margin-top: 8px;
+    text-decoration: underline;
+}
+
+/* styling for city kchart */
+
+#city-sec{
+    position: absolute;
+    background-color: #274956;
+    margin-top: -70px;
+    width: 1300px;
+    height: 900px;
+}
+
+#kcity-title{
+    position: relative;
+    color: #f1edf4;
+    font-family: 'Bubble-font';
+    font-size: 40px;
+    letter-spacing: 1px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+
+#kchart-output{
+    color: #d39af2;
+    position: absolute;
+    font-family: 'Bubble-font';
+    font-size: 35px;
+    letter-spacing: 1px;
+    margin-left: 130px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+
+#city-win{
+    position: absolute;
+    width: 700px;
+    height: 490px;
+    background-color: #04102F;
+    margin-left: 30px;
+    margin-top: 80px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #d39af2;
+}
+
+/* styling for city kchart error/image output */
+#err-output1 {
+    position: absolute;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 310px;
+    margin-top: 50px;
+}
+#img-win1{
+    position: absolute;
+    height: 460px;
+    width: 640px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+#icon-win1 {
+    position: absolute;
+    color: #EB8B3B;
+    font-size: 40px;
+    margin-top: 180px;
+    margin-left: 330px;
+}
+
+/* styling for city k button */
+#city-btn{
+    position: absolute;
+    height: 35px;
+    width: 240px;
+    margin-left: 270px;
+    margin-top: 630px;
+    background-color: #FEC14A;
+    color: #f1edf4;
+    text-decoration: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #EB8B3B;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+/* styling for state k-chart */
+#state-sec{
+    position: absolute;
+    background-color: #274956;
+    margin-top: 810px;
+    width: 1300px;
+    height: 900px;
+}
+#kstate-title{
+    position: relative;
+    color: #f1edf4;
+    font-family: 'Bubble-font';
+    font-size: 40px;
+    letter-spacing: 1px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+#kchart-output2{
+    color: #d39af2;
+    position: absolute;
+    font-family: 'Bubble-font';
+    font-size: 35px;
+    letter-spacing: 1px;
+    margin-left: 130px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+#state-win{
+    position: absolute;
+    width: 700px;
+    height: 490px;
+    background-color: #04102F;
+    margin-left: 30px;
+    margin-top: 80px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #d39af2;
+}
+
+/* styling for state kchart error/image output */
+
+#err-output2 {
+    position: absolute;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 310px;
+    margin-top: 50px;
+}
+#img-win2{
+    position: absolute;
+    height: 460px;
+    width: 640px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+#icon-win2 {
+    position: absolute;
+    color: #EB8B3B;
+    font-size: 40px;
+    margin-top: 180px;
+    margin-left: 330px;
+}
+
+/* styling for state k button */
+
+#state-btn{
+    position: absolute;
+    height: 35px;
+    width: 240px;
+    margin-left: 270px;
+    margin-top: 630px;
+    background-color: #FEC14A;
+    color: #f1edf4;
+    text-decoration: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #EB8B3B;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}
+
+/* styling for cluster bar chart */
+#cluster-sec{
+    position: absolute;
+    background-color: #274956;
+    margin-top: 1660px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    width: 1300px;
+    height: 900px;
+}
+#cluster-title{
+    position: relative;
+    color: #f1edf4;
+    font-family: 'Bubble-font';
+    font-size: 40px;
+    letter-spacing: 1px;
+    padding-top: 30px;
+    padding-left: 30px;
+}
+#cluster-desc{
+    position: relative;
+    color: #f1edf4;
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 40px;
+    padding-right: 30px;
+    font-size: 20px;
+    word-spacing: 2px;
+}
+#kchart-output3{
+    color: #d39af2;
+    position: absolute;
+    font-family: 'Bubble-font';
+    font-size: 35px;
+    letter-spacing: 1px;
+    margin-left: 130px;
+    margin-top: 10px;
+    text-decoration: underline;
+}
+#cluster-win{
+    position: absolute;
+    width: 700px;
+    height: 490px;
+    background-color: #04102F;
+    margin-left: 30px;
+    margin-top: 80px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #d39af2;
+}
+
+/* styling for cluster bar chart error/image output */
+
+#err-output3 {
+    position: absolute;
+    color: red;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 310px;
+    margin-top: 50px;
+}
+#img-win3{
+    position: absolute;
+    height: 460px;
+    width: 640px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+#icon-win3 {
+    position: absolute;
+    color: #EB8B3B;
+    font-size: 40px;
+    margin-top: 180px;
+    margin-left: 330px;
+}
+
+/* styling for cluster button */
+
+#cluster-btn{
+    position: absolute;
+    height: 35px;
+    width: 240px;
+    margin-left: 270px;
+    margin-top: 630px;
+    background-color: #FEC14A;
+    color: #f1edf4;
+    text-decoration: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-style: solid;
+    border-color: #EB8B3B;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+}

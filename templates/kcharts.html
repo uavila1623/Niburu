@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/kcharts.css">
+    <link rel="shortcut icon" type="image/png" sizes="16x16" href="/static/brain.png">
+    <title>K-Charts</title>
+</head>
+<div id="wrapper">
+    <div id="content">
+
+        <body>
+            <div id="header-container">
+                <div id="name-cont">
+                    <h1 id="web-name">Nibiru</h1>
+                </div>
+            </div>
+            <div id="intro">
+                <h2 id="intro-title">Lets Build some K-Charts.</h2>
+                <div id="intro-sec">
+                    <p id="intro-desc">This page is used to develop k-charts which are charts based on KMeans libary.
+                        K-means is a clustering algorithm in machine learning used for partitioning a set of data points
+                        into a
+                        specified number of clusters (k).
+                        The algorithm works by iteratively assigning each data point to the nearest cluster centroid and
+                        then
+                        updating the centroid based on the mean of the points assigned to it. The process continues
+                        until
+                        the
+                        centroids converge or a maximum number of iterations is reached. Hopefully it gives a better
+                        understanding
+                        of the data being used and help with creating some predictions.
+                    </p>
+                    <div id="button-sec">
+                        <p id="nav-header">Nav-Section</p>
+                        <a id="home-butn" href="{{url_for('index')}}">Home</a>
+                        <a id="chart-butn" href="{{url_for('charts')}}">Charts</a>
+                        <a id="data-butn" href="{{url_for('data')}}">Data</a>
+                    </div>
+                </div>
+            </div>
+            <div id="kcharts-sec">
+                <div id="city-sec">
+                    <h3 id="kcity-title">Generate a city-wide K-chart</h3>
+                    <p id="kchart-output">K-Chart Output</p>
+                    <div id="city-win">
+                        {% if error %}
+                        <div id="err-output1" class="alert alert-danger">
+                            {{ error }}
+                        </div>
+                        {% endif %}
+                        {% if not error %}
+                        {% if city_html is defined %}
+                        <div id="img-win1">
+                            {{ city_html|safe }}
+                        </div>
+                        {% else %}
+                        <div id="icon-win1">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="cityK-fields" method="POST" action="{{ url_for('cityKGraph') }}">
+                        <input id="city-btn" type="submit" value="Generate Graph" onclick="reloadPage()">
+                    </form>
+                </div>
+                <div id="state-sec">
+                    <h3 id="kstate-title">Generate a state-wide K-Chart:</h3>
+                    <p id="kchart-output2">K-Chart Output</p>
+                    <div id="state-win">
+                        {% if error2 %}
+                        <div id="err-output2" class="alert alert-danger">
+                            {{ error2 }}
+                        </div>
+                        {% endif %}
+                        {% if not error2 %}
+                        {% if state_html is defined %}
+                        <div id="img-win2">
+                            {{ state_html|safe }}
+                        </div>
+                        {% else %}
+                        <div id="icon-win2">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="stateK-fields" method="POST" action="{{ url_for('stateKGraph') }}">
+                        <input id="state-btn" type="submit" value="Generate Graph" onclick="reloadPage()">
+                    </form>
+                </div>
+                <div id="cluster-sec">
+                    <h3 id="cluster-title">Generate a cluster Bar-Chart:</h3>
+                    <p id="cluster-desc">This helps identify what each cluster represents</p>
+                    <p id="kchart-output3">Cluster Bar Chart</p>
+                    <div id="cluster-win">
+                        {% if error3 %}
+                        <div id="err-output3" class="alert alert-danger">
+                            {{ error3 }}
+                        </div>
+                        {% endif %}
+                        {% if not error3 %}
+                        {% if bar_html is defined %}
+                        <div id="img-win3">
+                            {{ bar_html|safe }}
+                        </div>
+                        {% else %}
+                        <div id="icon-win3">
+                            <i class="fas fa-image"></i>
+                        </div>
+                        {% endif %}
+                        {% endif %}
+                    </div>
+                    <form id="clusterK-fields" method="POST" action="{{ url_for('barChart') }}">
+                        <input id="cluster-btn" type="submit" value="Generate Chart" onclick="reloadPage()">
+                    </form>
+                </div>
+            </div>
+            <script src="/static/scripts/btnscrollPos.js"></script>
+        </body>
+    </div>
+</div>
+
+</html>
