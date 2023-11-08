@@ -25,4 +25,4 @@ Machine Learning weather prediction web app.
 1. clone repo
 2. download any dependencies
 3. You might need to create a conda environment.
-4. Once you created the environment type python3 app.py(Mac) python app.py. And enjoy the web app.
+4. Once you created the environment type python3 app.py(Mac) or python app.py for other devices. And enjoy the web app.
