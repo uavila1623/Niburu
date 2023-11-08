@@ -20,4 +20,9 @@ Machine Learning weather prediction web app.
 
 - **Data Used**: The data being used is from a dataset of different weather events that occurred in the United states from 2016-2022 that I obtained from here: https://www.kaggle.com/datasets/sobhanmoosavi/us-weather-events. The data has been modified to better fit the model and removed uneccessary entries like null values or data that was not used.
 
-**Note**: The csv files were way to large to upload to the github repo directly. To obtain the csv file just click the link above and download the csv file from kaggle directly. ^•ﻌ•^ฅ
+## Usage
+
+1. clone repo
+2. download any dependencies
+3. You might need to create a conda environment.
+4. Once you created the environment type python3 app.py(Mac) python app.py. And enjoy the web app.
